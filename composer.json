@@ -1,0 +1,26 @@
+{
+    "name": "emhar/guzzle-http-oauth2",
+    "type": "symfony-bundle",
+    "description": "Configure Sainsburys Oauth 2 plugin on guzzle client services",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Emmanuel Harleaux",
+            "homepage": "https://github.com/emhar"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "~6.0",
+        "sainsburys/guzzle-oauth2-plugin": "^3.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Emhar\\GuzzleHttpOAuth2Bundle\\": ""
+        }
+    }   
+}
