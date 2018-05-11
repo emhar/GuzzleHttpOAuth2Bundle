@@ -2,8 +2,8 @@
 
 namespace Emhar\GuzzleHttpOAuth2Bundle\DependencyInjection;
 
+use Emhar\GuzzleHttpOAuth2Bundle\Middleware\OAuthMiddleware;
 use Sainsburys\Guzzle\Oauth2\GrantType\ClientCredentials;
-use Sainsburys\Guzzle\Oauth2\Middleware\OAuthMiddleware;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -36,6 +36,8 @@ class EmharGuzzleHttpOAuth2Extension extends Extension
             $middlewareDefinition = new Definition(OAuthMiddleware::class, array(
                 new Reference($oAuthInfo['oauth_client_service']),
                 new Reference($clientCredentialId),
+                null,
+                isset($oAuthInfo['cache_service']) ? new Reference($oAuthInfo['cache_service']) : null
             ));
             $middlewareDefinition->setPublic(false);
 

@@ -24,6 +24,7 @@ class Configuration implements ConfigurationInterface
                             ->scalarNode('login_url')->end()
                             ->scalarNode('client_id')->end()
                             ->scalarNode('client_secret')->end()
+                            ->scalarNode('cache_service')->defaultNull()->end()
                         ->end()
                     ->end()
                 ->end()
