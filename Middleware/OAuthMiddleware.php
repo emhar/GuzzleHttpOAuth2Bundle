@@ -113,12 +113,14 @@ class OAuthMiddleware extends BaseOAuthMiddleware
     {
         parent::acquireAccessToken();
         if ($this->cache && $this->accessToken) {
+            $data = $this->accessToken->getData();
+            $data['expires'] = $this->accessToken->getExpires()->getTimestamp();
             $this->cache->set(
                 $this->getTokenKey(),
                 json_encode(array(
                     'token' =>$this->accessToken->getToken(),
                     'type' => $this->accessToken->getType(),
-                    'data' => $this->accessToken->getData()
+                    'data' => $data
                 )),
                 $this->accessToken->getExpires()->getTimestamp() - (new \DateTime())->getTimestamp() - 1
             );
