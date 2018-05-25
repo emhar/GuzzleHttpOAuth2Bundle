@@ -119,9 +119,9 @@ class OAuthMiddleware extends BaseOAuthMiddleware
                     'token' =>$this->accessToken->getToken(),
                     'type' => $this->accessToken->getType(),
                     'data' => $this->accessToken->getData()
-                ),
-                $this->accessToken->getExpires()->getTimestamp() - (new \DateTime())->getTimestamp()
-            ));
+                )),
+                $this->accessToken->getExpires()->getTimestamp() - (new \DateTime())->getTimestamp() - 1
+            );
         }
         return $this;
     }
